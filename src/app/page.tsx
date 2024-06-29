@@ -78,6 +78,54 @@ const SUBCATEGORIES = [
 const DEFAULT_CUSTOM_RANGE = [0, 100] as [number, number];
 
 export default function Home() {
+  const [filter, setFilter] = useState<TProductState>({
+    color: ["white", "beige", "blue", "green", "purple"],
+    size: ["S", "M", "L"],
+    price: { isCustom: false, range: DEFAULT_CUSTOM_RANGE },
+    sort: "none",
+  });
+
+  const { data: products } = useQuery({
+    queryKey: ["product"],
+    queryFn: async () => {
+      const { data } = await axios.post<QueryResult<TProduct>[]>(
+        "http://localhost:3000/api/products",
+        {
+          filter: {
+            sort: filter.sort,
+          },
+        }
+      );
+
+      return data;
+    },
+  });
+
+  const applyArrayFilter = ({
+    category,
+    value,
+  }: {
+    category: keyof Pick<typeof filter, "color" | "size">;
+    value: string;
+  }) => {
+    const isFilterApplied = filter[category].includes(value as never);
+
+    if (isFilterApplied) {
+      setFilter((prev) => ({
+        ...prev,
+        [category]: prev[category].filter((v) => v !== value),
+      }));
+    } else {
+      setFilter((prev) => ({
+        ...prev,
+        [category]: [...prev[category], value],
+      }));
+    }
+  };
+
+  console.log(filter);
+  // console.log(filter);
+  // console.log(query);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
