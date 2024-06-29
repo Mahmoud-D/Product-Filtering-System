@@ -1,4 +1,81 @@
-import Image from "next/image";
+"use client";
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { QueryResult } from "@upstash/vector";
+
+import axios from "axios";
+import { cn } from "@/lib/utils";
+import { TProductState } from "@/lib/validators/product-validator";
+import { TProduct } from "@/db";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import ProductSkeleton from "@/components/products/ProductSkeleton";
+import Product from "@/components/products/Product";
+
+import { ChevronDown } from "lucide-react";
+
+const SORT_OPTIONS = [
+  { name: "None", value: "none" },
+  { name: "Low to High", value: "price-asc" },
+  { name: "High to Low", value: "price-desc" },
+] as const;
+
+const COLOR_FILTERS = {
+  id: "color",
+  name: "Color",
+  options: [
+    { value: "white", label: "White" },
+    { value: "beige", label: "Beige" },
+    { value: "blue", label: "Blue" },
+    { value: "green", label: "Green" },
+    { value: "purple", label: "Purple" },
+  ] as const,
+};
+
+const SIZE_FILTERS = {
+  id: "size",
+  name: "Size",
+  options: [
+    { value: "S", label: "S" },
+    { value: "M", label: "M" },
+    { value: "L", label: "L" },
+  ],
+} as const;
+
+const PRICE_FILTERS = {
+  id: "price",
+  name: "Price",
+  options: [
+    { value: [0, 100], label: "Any price" },
+    {
+      value: [0, 20],
+      label: "Under 20€",
+    },
+    {
+      value: [0, 40],
+      label: "Under 40€",
+    },
+    // custom option defined in JSX
+  ],
+} as const;
+
+const SUBCATEGORIES = [
+  { name: "T-Shirts", selected: true, href: "#" },
+  { name: "Hoodies", selected: false, href: "#" },
+  { name: "Sweatshirts", selected: false, href: "#" },
+  { name: "Accessories", selected: false, href: "#" },
+];
+const DEFAULT_CUSTOM_RANGE = [0, 100] as [number, number];
 
 export default function Home() {
   return (
