@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Product Filtering System
+
+This project is a web application designed to provide a dynamic product filtering system. Built with Next.js, it leverages modern web technologies to offer a seamless and interactive user experience. The application allows users to filter products based on various criteria, ensuring they find exactly what they're looking for.
+
+## Features
+
+- **Dynamic Product Filtering**: Users can filter products based on different attributes.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
+- **State Management**: Utilizes `@tanstack/react-query` for efficient server state management in React.
+- **Customizable UI Components**: Leveraging `@shadcn/ui` components for a rich UI experience.
+- **Performance Optimized**: Built with Next.js for fast page loads and optimal SEO.
+
+## Technologies Used
+
+- **Next.js**: A React framework for production.
+- **React**: A JavaScript library for building user interfaces.
+- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+- **@tanstack/react-query**: For fetching, caching, and updating server state in React applications.
+- **Axios**: Promise based HTTP client for the browser and node.js.
+- **Zod**: TypeScript-first schema validation with static type inference.
+- **@shadcn/ui**: For building accessible UI components with a modern design system.
+  
 
 ## Getting Started
 
-First, run the development server:
+To get a local copy up and running follow these simple steps.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Prerequisites
+- npm
+  ```sh
+  npm install npm@latest -g
+
+# Installation
+
+1. Clone the repo
+
+  ```sh
+  git clone https://github.com/Mahmoud-D/product-filtering-system.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install NPM packages
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+  ```sh
+  npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Start the development server
 
-## Learn More
+  ```sh
+  npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+# Usage
+After starting the development server, navigate to http://localhost:3000 to view the application. Use the filter options provided to filter through the products as per your requirements.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Contributing
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
