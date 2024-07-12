@@ -39,14 +39,22 @@ export const POST = async (req: NextRequest) => {
     const { color, size, price, sort } = productFilterValidator.parse(
       body.filter
     );
+
     const filter = new Filter();
-    color.forEach((color) => filter.add("color", "=", color));
-    size.forEach((size) => filter.add("size", "=", size));
+
+    color.length > 0
+      ? color.forEach((color) => filter.add("color", "=", color))
+      : filter.addRaw("color", 'color = ""');
+
+    size.length > 0
+      ? size.forEach((size) => filter.add("size", "=", size))
+      : filter.addRaw("size", 'size = ""');
 
     filter.addRaw("price", `price >= ${price[0]} AND price <= ${price[1]}`);
 
     const products = await db.query({
       topK: 12,
+
       vector: [
         0,
         0,
@@ -56,9 +64,11 @@ export const POST = async (req: NextRequest) => {
           ? 0
           : MAX_PRODUCT_PRICE,
       ],
+
       includeMetadata: true,
       filter: filter.hasFilter() ? filter.get() : undefined,
     });
+
     return new Response(JSON.stringify(products));
   } catch (error) {
     console.error(error);
