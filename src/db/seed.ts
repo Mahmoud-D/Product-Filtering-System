@@ -1,4 +1,5 @@
-import { type TProduct, db } from ".";
+import { db } from ".";
+import { type TProduct } from "@/types";
 import * as dotenv from "dotenv";
 
 dotenv.config();
