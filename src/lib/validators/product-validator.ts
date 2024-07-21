@@ -1,16 +1,5 @@
+import { AVAILABLE_COLORS, AVAILABLE_SIZES, AVAILABLE_SORT } from "@/constants";
 import { z } from "zod";
-
-export const AVAILABLE_SIZES = ["S", "M", "L"] as const;
-
-export const AVAILABLE_COLORS = [
-  "white",
-  "beige",
-  "green",
-  "purple",
-  "blue",
-] as const;
-
-export const AVAILABLE_SORT = ["none", "price-asc", "price-desc"] as const;
 
 export const productFilterValidator = z.object({
   size: z.array(z.enum(AVAILABLE_SIZES)),
