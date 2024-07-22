@@ -4,9 +4,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider } from "./theme-provider";
 
-const client = new QueryClient();
-
 const Providers = ({ children }: PropsWithChildren<{}>) => {
+  const client = new QueryClient();
   return (
     <ThemeProvider
       attribute="class"
