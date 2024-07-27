@@ -19,40 +19,42 @@ This project is a web application designed to provide a dynamic product filterin
 - **Axios**: Promise based HTTP client for the browser and node.js.
 - **Zod**: TypeScript-first schema validation with static type inference.
 - **@shadcn/ui**: For building accessible UI components with a modern design system.
-  
 
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
+
 - npm
   ```sh
   npm install npm@latest -g
+  ```
 
 # Installation
 
 1. Clone the repo
 
-  ```sh
-  git clone https://github.com/Mahmoud-D/product-filtering-system.git
+```sh
+git clone https://github.com/Mahmoud-D/product-filtering-system.git
 ```
 
 2. Install NPM packages
 
-  ```sh
-  npm install
+```sh
+npm install
 ```
 
 3. Start the development server
 
-  ```sh
-  npm run dev
+```sh
+npm run dev
 ```
 
 # Usage
+
 After starting the development server, navigate to http://localhost:3000 to view the application. Use the filter options provided to filter through the products as per your requirements.
 
 # Contributing
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
