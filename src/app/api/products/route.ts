@@ -31,8 +31,8 @@ class Filter {
   }
 }
 
-export const AVG_PRODUCT_PRICE = 25
-export const MAX_PRODUCT_PRICE = 50
+const AVG_PRODUCT_PRICE = 25
+const MAX_PRODUCT_PRICE = 50
 export const POST = async (req: NextRequest) => {
   try {
     const body = await req.json()
