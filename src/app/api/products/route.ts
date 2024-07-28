@@ -1,56 +1,56 @@
-import { NextRequest } from "next/server";
-import { db } from "@/db";
-import { productFilterValidator } from "@/lib/validators/product-validator";
+import { NextRequest } from 'next/server'
+import { db } from '@/db'
+import { productFilterValidator } from '@/lib/validators/product-validator'
 
 class Filter {
-  private filters: Map<string, string[]> = new Map();
+  private filters: Map<string, string[]> = new Map()
   hasFilter() {
-    return this.filters.size > 0;
+    return this.filters.size > 0
   }
 
   add(key: string, operator: string, value: string | number) {
-    const filter = this.filters.get(key) || [];
+    const filter = this.filters.get(key) || []
     filter.push(
-      `${key} ${operator} ${typeof value === "number" ? value : `"${value}"`}`
-    );
-    this.filters.set(key, filter);
+      `${key} ${operator} ${typeof value === 'number' ? value : `"${value}"`}`
+    )
+    this.filters.set(key, filter)
   }
   addRaw(key: string, rawFilter: string) {
-    this.filters.set(key, [rawFilter]);
+    this.filters.set(key, [rawFilter])
   }
 
   get() {
-    const parts: string[] = [];
+    const parts: string[] = []
 
     this.filters.forEach((filter) => {
-      const groupedValues = filter.join(" OR ");
-      parts.push(`(${groupedValues})`);
-    });
+      const groupedValues = filter.join(' OR ')
+      parts.push(`(${groupedValues})`)
+    })
 
-    return parts.join(" AND ");
+    return parts.join(' AND ')
   }
 }
 
-export const AVG_PRODUCT_PRICE = 25;
-export const MAX_PRODUCT_PRICE = 50;
+export const AVG_PRODUCT_PRICE = 25
+export const MAX_PRODUCT_PRICE = 50
 export const POST = async (req: NextRequest) => {
   try {
-    const body = await req.json();
+    const body = await req.json()
     const { color, size, price, sort } = productFilterValidator.parse(
       body.filter
-    );
+    )
 
-    const filter = new Filter();
+    const filter = new Filter()
 
     color.length > 0
-      ? color.forEach((color) => filter.add("color", "=", color))
-      : filter.addRaw("color", 'color = ""');
+      ? color.forEach((color) => filter.add('color', '=', color))
+      : filter.addRaw('color', 'color = ""')
 
     size.length > 0
-      ? size.forEach((size) => filter.add("size", "=", size))
-      : filter.addRaw("size", 'size = ""');
+      ? size.forEach((size) => filter.add('size', '=', size))
+      : filter.addRaw('size', 'size = ""')
 
-    filter.addRaw("price", `price >= ${price[0]} AND price <= ${price[1]}`);
+    filter.addRaw('price', `price >= ${price[0]} AND price <= ${price[1]}`)
 
     const products = await db.query({
       topK: 12,
@@ -58,22 +58,22 @@ export const POST = async (req: NextRequest) => {
       vector: [
         0,
         0,
-        sort === "none"
+        sort === 'none'
           ? AVG_PRODUCT_PRICE
-          : sort === "price-asc"
-          ? 0
-          : MAX_PRODUCT_PRICE,
+          : sort === 'price-asc'
+            ? 0
+            : MAX_PRODUCT_PRICE
       ],
 
       includeMetadata: true,
-      filter: filter.hasFilter() ? filter.get() : undefined,
-    });
+      filter: filter.hasFilter() ? filter.get() : undefined
+    })
 
-    return new Response(JSON.stringify(products));
+    return new Response(JSON.stringify(products))
   } catch (error) {
-    console.error(error);
-    return new Response(JSON.stringify({ message: "Internal Server Error" }), {
-      status: 500,
-    });
+    console.error(error)
+    return new Response(JSON.stringify({ message: 'Internal Server Error' }), {
+      status: 500
+    })
   }
-};
+}
