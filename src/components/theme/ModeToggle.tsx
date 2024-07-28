@@ -14,7 +14,7 @@ import {
 const ModeToggle = () => {
   const { setTheme } = useTheme();
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button
           className="dark:bg-slate-500 bg-slate-800 hover:bg-slate-700 "
