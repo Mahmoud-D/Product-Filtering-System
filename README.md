@@ -9,6 +9,7 @@ This project is a web application designed to provide a dynamic product filterin
 - **State Management**: Utilizes `@tanstack/react-query` for efficient server state management in React.
 - **Customizable UI Components**: Leveraging `@shadcn/ui` components for a rich UI experience.
 - **Performance Optimized**: Built with Next.js for fast page loads and optimal SEO.
+- **Internationalization**: Supports multiple languages using `next-intl`.
 
 ## Technologies Used
 
@@ -19,6 +20,7 @@ This project is a web application designed to provide a dynamic product filterin
 - **Axios**: Promise based HTTP client for the browser and node.js.
 - **Zod**: TypeScript-first schema validation with static type inference.
 - **@shadcn/ui**: For building accessible UI components with a modern design system.
+- **next-intl**: Internationalization library for Next.js.
 
 ## Getting Started
 
