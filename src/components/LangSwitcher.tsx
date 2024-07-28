@@ -5,8 +5,7 @@ import { useLocale, useTranslations } from 'next-intl'
 import { locales } from '@/config/locale'
 import { usePathname, useRouter } from '@/lib/navigation'
 
-type TProps = {}
-const LangSwitcher = ({}: TProps) => {
+const LangSwitcher = () => {
   const t = useTranslations('SwitchLang')
   const router = useRouter()
   const pathname = usePathname()
