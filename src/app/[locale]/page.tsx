@@ -32,10 +32,10 @@ export default function Home() {
   const { data: products, refetch } = useQuery({
     queryKey: ['product'],
     queryFn: async () => {
-      const BASE_URL = 'http://localhost:3000'
+      // const BASE_URL = 'http://localhost:3000'
 
       const { data } = await axios.post<QueryResult<TProduct>[]>(
-        `${BASE_URL}/api/products`,
+        `https://product-filtering-system-d2t4.vercel.app/api/products`,
         {
           filter: {
             sort: filter.sort,
