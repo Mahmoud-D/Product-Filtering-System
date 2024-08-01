@@ -14,14 +14,18 @@ This project is a web application designed to provide a dynamic product filterin
 
 ## Technologies Used
 
-- **Next.js**: A React framework for production.
-- **React**: A JavaScript library for building user interfaces.
-- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
-- **@tanstack/react-query**: For fetching, caching, and updating server state in React applications.
-- **Axios**: Promise based HTTP client for the browser and node.js.
-- **Zod**: TypeScript-first schema validation with static type inference.
-- **@shadcn/ui**: For building accessible UI components with a modern design system.
-- **next-intl**: Internationalization library for Next.js.
+- [Next.js](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [shadcn UI](https://ui.shadcn.com/)
+- [React Query](https://tanstack.com/query/v5)
+- [Axios](https://axios-http.com/)
+- [next-intl](https://next-intl-docs.vercel.app/)
+- [Zod](https://zod.dev/)
+- [Lucide Icons](https://lucide.dev/)
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
 
 ## Getting Started
 
