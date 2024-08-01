@@ -10,6 +10,7 @@ This project is a web application designed to provide a dynamic product filterin
 - **Customizable UI Components**: Leveraging `@shadcn/ui` components for a rich UI experience.
 - **Performance Optimized**: Built with Next.js for fast page loads and optimal SEO.
 - **Internationalization**: Supports multiple languages using `next-intl`.
+- **Dark Mode**: Provides a dark theme option for better user experience in low-light environments.
 
 ## Technologies Used
 
